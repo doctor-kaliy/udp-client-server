@@ -1,5 +1,5 @@
 ## Simple multithreaded client-server console application
-There are nonblocking versions for both client and server.
+There are **nonblocking** versions for both client and server.
 Client sends request string to the Server, which responds "Hello, $(request string's content)"
 ### Used:
   - Standard Java library
