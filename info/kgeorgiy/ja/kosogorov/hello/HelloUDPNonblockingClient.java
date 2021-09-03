@@ -1,7 +1,5 @@
 package info.kgeorgiy.ja.kosogorov.hello;
 
-import info.kgeorgiy.java.advanced.hello.HelloClient;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -11,7 +9,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Iterator;
+import info.kgeorgiy.ja.kosogorov.hello.Checker;
 import java.util.Objects;
 
 import static info.kgeorgiy.ja.kosogorov.hello.Utils.*;
@@ -78,7 +76,6 @@ public class HelloUDPNonblockingClient implements HelloClient {
         }
     }
 
-    @Override
     public void run(String host, int port, String prefix, int threads, int requests) {
         final SocketAddress address = new InetSocketAddress(host, port);
         DatagramChannel[] channels = new DatagramChannel[threads];

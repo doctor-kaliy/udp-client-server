@@ -1,7 +1,5 @@
 package info.kgeorgiy.ja.kosogorov.hello;
 
-import info.kgeorgiy.java.advanced.hello.HelloClient;
-
 import java.io.IOException;
 import java.net.*;
 import java.util.Arrays;
@@ -13,7 +11,6 @@ import java.util.stream.IntStream;
 public class HelloUDPClient implements HelloClient {
     private static final long AWAIT_TIME_MILLIS = 10101;
 
-    @Override
     public void run(String host, int port, String prefix, int threads, int requests) {
         final SocketAddress address = new InetSocketAddress(host, port);
         final ExecutorService pool = Executors.newFixedThreadPool(threads);

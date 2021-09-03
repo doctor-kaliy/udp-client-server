@@ -1,7 +1,5 @@
 package info.kgeorgiy.ja.kosogorov.hello;
 
-import info.kgeorgiy.java.advanced.hello.HelloServer;
-
 import java.io.IOException;
 import java.net.*;
 import java.util.Arrays;
@@ -21,7 +19,6 @@ public class HelloUDPServer implements HelloServer {
         this.size = 0;
     }
 
-    @Override
     public void start(int port, int threads) {
         try {
             socket = new DatagramSocket(port);
@@ -40,7 +37,7 @@ public class HelloUDPServer implements HelloServer {
                     try {
                         Utils.receiveData(socket, packet, buffer);
                         Utils.sendData(socket, packet,"Hello, " + Utils.getDatagramMessage(packet));
-                    } catch (SocketException ignored) {
+                    } catch (SocketException | SocketTimeoutException ignored) {
                     } catch (IOException e) {
                         System.err.println("Error occurred while processing request: " + e.getMessage());
                     }
@@ -49,7 +46,6 @@ public class HelloUDPServer implements HelloServer {
         );
     }
 
-    @Override
     public void close() {
         socket.close();
         Utils.shutDownPool(pool, 30000);

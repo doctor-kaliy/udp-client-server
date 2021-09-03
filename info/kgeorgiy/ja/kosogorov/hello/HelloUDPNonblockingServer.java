@@ -1,7 +1,5 @@
 package info.kgeorgiy.ja.kosogorov.hello;
 
-import info.kgeorgiy.java.advanced.hello.HelloServer;
-
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -66,7 +64,6 @@ public class HelloUDPNonblockingServer implements HelloServer {
         queue.add(data);
     }
 
-    @Override
     public void start(int port, int threads) {
         final Selector selector;
         final DatagramChannel datagramChannel;
@@ -137,7 +134,6 @@ public class HelloUDPNonblockingServer implements HelloServer {
         }, "Server error occurred"));
     }
 
-    @Override
     public void close() {
         workers.shutdown();
         try {

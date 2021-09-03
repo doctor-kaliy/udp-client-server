@@ -1,8 +1,5 @@
 package info.kgeorgiy.ja.kosogorov.hello;
 
-import info.kgeorgiy.java.advanced.hello.HelloClient;
-import info.kgeorgiy.java.advanced.hello.HelloServer;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -63,34 +60,34 @@ public class Utils {
 
     public static void runServer(HelloServer server, String... args) {
         if (args == null || args.length != 2) {
-            System.err.println("Expected 2 arguments");
+            System.err.println("expected 2 arguments");
             return;
         }
         if (Arrays.stream(args).anyMatch(Objects::isNull)) {
-            System.err.println("Arguments should be correct integer numbers: Found null.");
+            System.err.println("null argument is forbidden.");
             return;
         }
         try {
             server.start(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
         } catch (NumberFormatException e) {
-            System.err.println("Arguments should be correct integer numbers: " + e.getMessage());
+            System.err.println("unexpected non integer argument: " + e.getMessage());
         }
     }
 
     public static void runClient(HelloClient client, String... args) {
         if (args == null || args.length != 5) {
-            System.err.println("Expected 5 arguments");
+            System.err.println("expected 5 arguments");
             return;
         }
         if (Arrays.stream(args).anyMatch(Objects::isNull)) {
-            System.err.println("Arguments should be correct integer numbers: Found null.");
+            System.err.println("null argument is forbidden.");
             return;
         }
         try {
             client.run(args[0], Integer.parseInt(args[1]), args[2],
                     Integer.parseInt(args[3]), Integer.parseInt(args[4]));
         } catch (NumberFormatException e) {
-            System.err.println("Arguments should be correct integer numbers: " + e.getMessage());
+            System.err.println("unexpected non integer argument: " + e.getMessage());
         }
     }
 }
